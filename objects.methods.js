@@ -79,3 +79,61 @@ const obj = {
 };
 
 Object.values(obj); //   returns array ["somestring", 42, false]
+
+// =============================================
+Object.defineProperties(obj, props);
+
+const object1 = {};
+
+Object.defineProperties(object1, {
+  property1: {
+    value: 42,
+    writable: true,
+  },
+  property2: {},
+});
+
+console.log(object1.property1);
+// expected output: 42
+
+// =============================================
+
+Object.freeze();
+
+const obj = {
+  prop: 42,
+};
+
+Object.freeze(obj);
+
+obj.prop = 33;
+// Throws an error in strict mode
+
+console.log(obj.prop);
+// expected output: 42
+
+// =============================================
+
+Object.getOwnPropertyNames();
+
+const object1 = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+console.log(Object.getOwnPropertyNames(object1));
+// expected output: Array ["a", "b", "c"]
+
+// =============================================
+
+obj.hasOwnProperty(prop);
+
+const object1 = {};
+object1.property1 = 42;
+
+console.log(object1.hasOwnProperty("property1"));
+// expected output: true
+
+console.log(object1.hasOwnProperty("toString"));
+// expected output: false
